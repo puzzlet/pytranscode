@@ -30,7 +30,7 @@ IPOD_MP4_VIDEO = {'format':'mp4',
                   'size':'480x320',
                   'bitrate':'700k'}
 
-IPOD_MP4_AUDIO = {'acodec':'libfaac',
+IPOD_MP4_AUDIO = {'acodec':'aac',
                   'rate':'128k'}
 
 
@@ -38,7 +38,7 @@ IPOD_MP4_AUDIO = {'acodec':'libfaac',
                         
 # HD Video (780p)
 # ===============
-HD_H264_AUDIO = {'acodec':'libfaac',
+HD_H264_AUDIO = {'acodec':'aac',
                  'rate':'96k',
                  'freq':'44100'}
            
@@ -87,3 +87,33 @@ HQ_FLV_VIDEO = {'format':'flv',
                 'qmin':'12',
                 'qmax':'12',
                 'g':'500'}
+                
+# OwnTube Formats
+# ===============
+
+OWNTUBE_MP4_VIDEO = {'format':'mp4',
+                  'vcodec':'mpeg4',
+                  'qmin':'3',
+                  'qmax':'5',
+                  'g':'300',
+                  'bitrate':'700k',
+                  'vf':'"scale=-1:360"',
+}
+
+OWNTUBE_MP4_AUDIO = {'acodec':'libfaac',
+                  'rate':'64k'}
+
+OWNTUBE_WEBM_VIDEO = {'format':'webm',
+                  'vf':'"scale=-1:360"',
+                  'bitrate':'700k'}
+
+OWNTUBE_WEBM_AUDIO = {'acodec':'libvorbis',
+                  'rate':'128k'}
+
+OWNTUBE_MP3_AUDIO = {'format':'mp3',
+                  'rate':'64k'}
+
+OWNTUBE_OGG_AUDIO = {'format':'ogg',
+                  'rate':'64k'}
+
+OWNTUBE_NULL_VIDEO = {}

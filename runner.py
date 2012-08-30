@@ -135,15 +135,10 @@ def runTranscode(commandline, outfile):
         pass
     
     if outcode.poll() == 0:
-        # All is well
         pass
     else:
-        #Report error
         print get_final_output(outfile)
-        
-        # Signal other thread (output may not contain error message, so we
-        # add one manually just in case)
-        
+            
         f = open(outfile, 'a')
         f.write('error code:' + (str(outcode.poll())))
         f.close()
@@ -155,7 +150,6 @@ def runTracker(outfile):
         time.sleep(1)
         a = check_tick(outfile)
         
-            
         if a == 100:
             print "%i%%" % a
             print "Transcode complete!"
@@ -169,4 +163,3 @@ def runTracker(outfile):
             break
         
         print "%i%%" % a
-

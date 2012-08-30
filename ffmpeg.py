@@ -43,6 +43,7 @@ class audio_settings:
             'channels': '-ac',
             'acodec': '-acodec',
             'stream_filter': '-absf',
+            'format': '-f',
         }
         
     def command(self):
@@ -85,6 +86,7 @@ class video_settings:
             'passn': '-pass',
             'format': '-f',
             'deinterlace': '-deinterlace',
+            'vf': '-vf',
         }
         
         self.advanced_options = {
