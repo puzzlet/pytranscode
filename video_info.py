@@ -99,7 +99,7 @@ class VideoObject:
 
     def get_size(self):
         output = self.output
-        ex = r'\d+x\d+'
+        ex = r'Video:.+\s(\d+x\d+)'
         n = re.compile(ex)
         found = n.findall(output)
 
