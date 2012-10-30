@@ -28,7 +28,7 @@
 """
 
 
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import Popen, PIPE
 import re
 
 class VideoObject:
@@ -62,7 +62,7 @@ class VideoObject:
 
 
     def grab_source(self):
-        commandline = 'ffmpeg -i ' + self.source
+        commandline = ['avprobe', self.source]
         outcode = Popen(commandline, stdout=PIPE, stderr=PIPE)
 
         self.output = outcode.stderr.read()
@@ -108,12 +108,12 @@ class VideoObject:
 
     def get_video_codec(self):
         output = self.output
-        ex = r'Video: \w+'
+        ex = r'(Video: \w+( \(\w+\))?)'
         n = re.compile(ex)
         found = n.findall(output)
 
         if found:
-            self.video_codec = found[0].replace('Video: ', '').replace(' ', '')
+            self.video_codec = found[0][0].replace('Video: ', '').replace(' ', '')
 
     def get_video_bitrate(self):
         output = self.output
@@ -166,5 +166,3 @@ class VideoObject:
         print "Audio Codec: \t" + self.audio_codec
         print "Sampling Freq: \t" + self.audio_freq  + " Hz"
         print "Audio Bitrate: \t" + self.audio_bitrate  + " kb/s"
-
-
