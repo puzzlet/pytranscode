@@ -2,7 +2,7 @@
 
     Presets for the ffmpeg manager
     ==============================
-    
+
     Import these presets for quick access to transcode settings
 
 """
@@ -19,7 +19,7 @@ STANDARD_FLV_AUDIO = {'rate':'256k',
                       'freq':'44100',
                       'acodec':'libmp3lame'}
 
-                        
+
 # IPOD Video
 # ==========
 IPOD_MP4_VIDEO = {'format':'mp4',
@@ -34,14 +34,14 @@ IPOD_MP4_AUDIO = {'acodec':'libfaac',
                   'rate':'128k'}
 
 
-                     
-                        
+
+
 # HD Video (780p)
 # ===============
 HD_H264_AUDIO = {'acodec':'libfaac',
                  'rate':'96k',
                  'freq':'44100'}
-           
+
 HD_H264_VIDEO = {'vcodec':'libx264',
                  'level':'41',
                  'crf':'25',
@@ -65,7 +65,7 @@ HD_H264_VIDEO = {'vcodec':'libx264',
                  'bidir_refine': '1',
                  'refs': '6',
                  'deblockalpha':'0',
-                 'deblockbeta':'0',                 
+                 'deblockbeta':'0',
                  }
 
 

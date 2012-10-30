@@ -53,13 +53,13 @@ There are five files with PyTranscode, these have the following basic functionsa
 
 - presets.py:   Some presets to use with ffmpeg if you can;t be bothered to
                 write out the long dictionaries some transcodes require
-                
+
 - runner.py:    Runner basically allows you to run ffmpeg in a managed way and
                 trap the output as well as the percentage complete
 
 - splash.py:    This will let you pull thumbnails at equal intervals from the
                 inpout file and return the filenames
-                
+
 - video_info:   Need to know everything about a video file? This basically parses
                 the -i output from ffmpeg to get all the details and present
                 them as a class
