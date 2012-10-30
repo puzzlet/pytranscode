@@ -108,7 +108,7 @@ class VideoObject:
 
     def get_video_codec(self):
         output = self.output
-        ex = r'(Video: \w+( \(\w+\))?)'
+        ex = r'(Video: \w+( \([ \w]+\))?)'
         n = re.compile(ex)
         found = n.findall(output)
 
