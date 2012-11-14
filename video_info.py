@@ -148,7 +148,7 @@ class VideoObject:
         n = re.compile(ex)
         found = n.findall(output)
 
-        if found:
+        if len(found) > 1:
             self.audio_bitrate = found[1].replace('kb/s', '').replace(' ', '')
 
     def printinfo(self):
