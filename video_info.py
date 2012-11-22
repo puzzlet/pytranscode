@@ -45,6 +45,7 @@ class VideoObject:
         self.audio_codec = None #
         self.audio_freq = None #
         self.audio_bitrate = None
+        self.audio_channels = None
 
         if self.source:
             # Get the output of the ffmpeg call
@@ -59,6 +60,7 @@ class VideoObject:
             self.get_audio_codec()
             self.get_audio_freq()
             self.get_audio_bitrate()
+            self.get_audio_channels()
 
 
     def grab_source(self):
@@ -151,6 +153,17 @@ class VideoObject:
         if len(found) > 1:
             self.audio_bitrate = found[1].replace('kb/s', '').replace(' ', '')
 
+    def get_audio_channels(self):
+        output = self.output
+        ex = r'\d+ channels?'
+        n = re.compile(ex)
+        found = n.findall(output)
+
+        if found:
+            self.audio_channels = int(
+                found[0].replace(' channels', '').replace(' channel', '')\
+                .replace(' ', ''))
+
     def printinfo(self):
         print "\nVIDEO INFO"
         print "=========="
@@ -166,3 +179,4 @@ class VideoObject:
         print "Audio Codec: \t" + self.audio_codec
         print "Sampling Freq: \t" + self.audio_freq  + " Hz"
         print "Audio Bitrate: \t" + self.audio_bitrate  + " kb/s"
+        print "Audio Channel Count: \t" + self.audio_channels  + " kb/s"
