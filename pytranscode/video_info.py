@@ -155,14 +155,26 @@ class VideoObject:
 
     def get_audio_channels(self):
         output = self.output
-        ex = r'\d+ channels?'
+        ex = (r'Audio: .*, '
+            r'(mono|stereo|quad|hexagonal|octagonal|downmix|\d\.[01])')
         n = re.compile(ex)
         found = n.findall(output)
 
-        if found:
-            self.audio_channels = int(
-                found[0].replace(' channels', '').replace(' channel', '')\
-                .replace(' ', ''))
+        if not found:
+            return
+        if found[0] == 'mono':
+            self.audio_channels = 1
+        elif found[0] in ['stereo', 'downmix']:
+            self.audio_channels = 2
+        elif found[0] == 'quad':
+            self.audio_channels = 4
+        elif found[0] == 'hexagonal':
+            self.audio_channels = 6
+        elif found[0] == 'octagonal':
+            self.audio_channels = 8
+        else:
+            x, y = found[0].split('.')
+            self.audio_channels = int(x) + int(y)
 
     def printinfo(self):
         print "\nVIDEO INFO"
