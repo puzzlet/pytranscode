@@ -28,6 +28,7 @@
 """
 
 
+from distutils.spawn import find_executable  # TODO(py3) shutil.which()
 from subprocess import Popen, PIPE
 import re
 
@@ -64,7 +65,10 @@ class VideoObject:
 
 
     def grab_source(self):
-        commandline = ['avprobe', self.source]
+        if find_executable('avprobe'):
+            commandline = ['avprobe', self.source]
+        else:
+            commandline = ['ffmpeg', '-i', self.source]
         outcode = Popen(commandline, stdout=PIPE, stderr=PIPE)
 
         self.output = outcode.stderr.read()
