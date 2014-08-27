@@ -71,7 +71,7 @@ class VideoObject:
             commandline = ['ffmpeg', '-i', self.source]
         outcode = Popen(commandline, stdout=PIPE, stderr=PIPE)
 
-        self.output = outcode.stderr.read()
+        self.output = outcode.stderr.read().decode('utf-8')
 
     def get_framerate(self):
         output = self.output
@@ -186,18 +186,18 @@ class VideoObject:
             self.audio_channels = int(x) + int(y)
 
     def printinfo(self):
-        print "\nVIDEO INFO"
-        print "=========="
-        print "Filename: \t" + self.source
-        print "Video Length: \t" + str(self.length) + " seconds"
-        print "Video Codec: \t" + self.video_codec
-        print "Video Size: \t" + self.video_size
-        print "Frame Rate: \t" + str(self.frame_rate) + " fps"
-        print "Video Bitrate: \t" + self.video_bitrate  + " kb/s"
+        print("\nVIDEO INFO")
+        print("==========")
+        print("Filename: \t" + self.source)
+        print("Video Length: \t" + str(self.length) + " seconds")
+        print("Video Codec: \t" + self.video_codec)
+        print("Video Size: \t" + self.video_size)
+        print("Frame Rate: \t" + str(self.frame_rate) + " fps")
+        print("Video Bitrate: \t" + self.video_bitrate  + " kb/s")
 
-        print "\nAUDIO INFO:"
-        print "==========="
-        print "Audio Codec: \t" + self.audio_codec
-        print "Sampling Freq: \t" + self.audio_freq  + " Hz"
-        print "Audio Bitrate: \t" + self.audio_bitrate  + " kb/s"
-        print "Audio Channel Count: \t" + self.audio_channels  + " kb/s"
+        print("\nAUDIO INFO:")
+        print("===========")
+        print("Audio Codec: \t" + self.audio_codec)
+        print("Sampling Freq: \t" + self.audio_freq  + " Hz")
+        print("Audio Bitrate: \t" + self.audio_bitrate  + " kb/s")
+        print("Audio Channel Count: \t" + self.audio_channels  + " kb/s")

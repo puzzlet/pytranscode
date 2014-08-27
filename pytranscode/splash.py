@@ -20,8 +20,7 @@
 """
 
 
-from video_info import *
-import re
+from .video_info import *
 
 class SplashImages:
     def __init__(self, input_file=None, count=None):

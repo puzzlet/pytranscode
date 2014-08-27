@@ -16,9 +16,7 @@
     track.start()
 """
 
-import os
-from subprocess import Popen, PIPE, STDOUT
-import sys
+from subprocess import Popen
 import re
 import time
 import threading
@@ -139,7 +137,7 @@ def runTranscode(commandline, outfile):
         pass
     else:
         #Report error
-        print get_final_output(outfile)
+        print(get_final_output(outfile))
 
         # Signal other thread (output may not contain error message, so we
         # add one manually just in case)
@@ -157,16 +155,16 @@ def runTracker(outfile):
 
 
         if a == 100:
-            print "%i%%" % a
-            print "Transcode complete!"
+            print("%i%%" % a)
+            print("Transcode complete!")
             #TODO: Cleanup!
             break
 
         if a == -1:
-            print "There was a problem"
+            print("There was a problem")
             #TODO: Cleanup!
 
             break
 
-        print "%i%%" % a
+        print("%i%%" % a)
 
